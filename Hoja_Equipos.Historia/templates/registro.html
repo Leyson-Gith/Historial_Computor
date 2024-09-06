@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Registro de Procedimiento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <h1>Crear Registro de Procedimiento para: {{ equipo.nombre }}</h1>
+
+    <form id="form-registro">
+        <label for="tipo">Tipo de Procedimiento:</label>
+        <select id="tipo" name="tipo" required>
+            <option value="Mantenimiento Preventivo">Mantenimiento Preventivo</option>
+            <option value="Mantenimiento Correctivo">Mantenimiento Correctivo</option>
+        </select><br>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea><br>
+
+        <label for="link">Enlace a Documento (opcional):</label>
+        <input type="text" id="link" name="link"><br>
+
+        <button type="submit">Crear Registro</button>
+        <button type="reset">Cancelar</button>
+    </form>
+
+    <a href="/equipo/{{ equipo.placa }}">Volver</a>
+</body>
+</html>

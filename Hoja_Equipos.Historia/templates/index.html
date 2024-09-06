@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Equipos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    
+    <h1>Inventario de Equipos</h1>
+
+    <!-- Formulario de Registro -->
+    <h2>Registrar Nuevo Equipo</h2>
+    <form id="form-registro">
+        <label for="placa">Placa (Número de Activo):</label>
+        <input type="text" id="placa" name="placa" required><br>
+
+        <label for="tipo">Tipo de Equipo:</label>
+        <select id="tipo" name="tipo" required>
+            <option value="portatil">Portátil</option>
+            <option value="escritorio">Escritorio</option>
+        </select><br>
+
+        <label for="nombre">Nombre del Equipo:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="serial">Serial del Equipo:</label>
+        <input type="text" id="serial" name="serial" required><br>
+
+        <label for="marca">Marca:</label>
+        <select id="marca" name="marca" required>
+            <option value="Intel Corei3">Intel Corei3</option>
+            <option value="Intel Corei5">Intel Corei5</option>
+            <option value="Intel Corei7">Intel Corei7</option>
+            <option value="Ryzen 3">Ryzen 3</option>
+            <option value="Ryzen 4">Ryzen 4</option>
+            <option value="Ryzen 6">Ryzen 6</option>
+            <option value="Ryzen 7">Ryzen 7</option>
+        </select><br>
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" required><br>
+
+        <label for="ram">Memoria RAM:</label>
+        <select id="ram" name="ram" required>
+            <option value="8GB">8GB</option>
+            <option value="16GB">16GB</option>
+            <option value="32GB">32GB</option>
+        </select><br>
+
+        <label for="cpu">Modelo de CPU:</label>
+        <input type="text" id="cpu" name="cpu" required><br>
+
+        <label for="almacenamiento">Cantidad y Tipo de Almacenamiento:</label>
+        <input type="text" id="almacenamiento" name="almacenamiento" required><br>
+
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" name="ubicacion" required><br>
+
+        <label for="sistema_operativo">Sistema Operativo:</label>
+        <select id="sistema_operativo" name="sistema_operativo" required>
+            <option value="Windows 7">Windows 7</option>
+            <option value="Windows 8">Windows 8</option>
+            <option value="Windows 10">Windows 10</option>
+            <option value="Windows 11">Windows 11</option>
+        </select><br>
+
+        <button type="button" onclick="registrarEquipo()">Registrar Equipo</button>
+        <button type="reset">Cancelar</button>
+    </form>
+
+    <!-- Buscador -->
+    <h2>Buscar Equipos</h2>
+    <input type="text" id="buscador" placeholder="Buscar equipos...">
+    <select id="filtro">
+        <option value="ram">RAM</option>
+        <option value="almacenamiento">Almacenamiento</option>
+        <option value="cpu">CPU</option>
+        <option value="sistema_operativo">Sistema Operativo</option>
+        <!-- Más filtros según sea necesario -->
+    </select>
+    <button onclick="buscar()">Buscar</button>
+
+    <p id="resultados-info"></p>
+
+    
+
+
+    <!-- Tabla de Equipos -->
+    <table id="tabla-equipos">
+        <thead>
+            <tr>
+                <th>Placa</th>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>RAM</th>
+                <th>CPU</th>
+                <th>Almacenamiento</th>
+                <th>Ubicación</th>
+                <th>Sistema Operativo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipo in equipos %}
+            <tr>
+                <td>{{ equipo.placa }}</td>
+                <td>{{ equipo.nombre }}</td>
+                <td>{{ equipo.marca }}</td>
+                <td>{{ equipo.modelo }}</td>
+                <td>{{ equipo.ram }}</td>
+                <td>{{ equipo.cpu }}</td>
+                <td>{{ equipo.almacenamiento }}</td>
+                <td>{{ equipo.ubicacion }}</td>
+                <td>{{ equipo.sistema_operativo }}</td>
+                <td>
+                    <a href="/equipo/{{ equipo.placa }}">Ver Equipo</a>
+                    <button onclick="eliminarEquipo('{{ equipo.placa }}')">Eliminar</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
+

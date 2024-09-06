@@ -1,0 +1,30 @@
+[
+    {
+        "placa": "123456",
+        "tipo": "escritorio",
+        "nombre": "PC Oficina 1",
+        "serial": "SN123456",
+        "marca": "Dell",
+        "modelo": "OptiPlex 7010",
+        "ram": "8GB",
+        "cpu": "Intel Core i5",
+        "almacenamiento": "256GB SSD",
+        "ubicacion": "Oficina Principal",
+        "sistema_operativo": "Windows 10",
+        "registros": []
+    },
+    {
+        "placa": "233456",
+        "tipo": "escritorio",
+        "nombre": "PC Oficina 2",
+        "serial": "SN233456",
+        "marca": "ACER",
+        "modelo": "Feuture 2270",
+        "ram": "16GB",
+        "cpu": "Intel Core i3",
+        "almacenamiento": "308 GB SSD",
+        "ubicacion": "Oficina Segundaria",
+        "sistema_operativo": "Windows 11",
+        "registros": []
+    }
+]

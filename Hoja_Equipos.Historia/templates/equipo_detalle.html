@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Equipo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <h1>Detalles del Equipo: {{ equipo.nombre }}</h1>
+
+    <table>
+        <tr><th>Placa:</th><td>{{ equipo.placa }}</td></tr>
+        <tr><th>Tipo:</th><td>{{ equipo.tipo }}</td></tr>
+        <tr><th>Nombre:</th><td>{{ equipo.nombre }}</td></tr>
+        <tr><th>Serial:</th><td>{{ equipo.serial }}</td></tr>
+        <tr><th>Marca:</th><td>{{ equipo.marca }}</td></tr>
+        <tr><th>Modelo:</th><td>{{ equipo.modelo }}</td></tr>
+        <tr><th>RAM:</th><td>{{ equipo.ram }}</td></tr>
+        <tr><th>CPU:</th><td>{{ equipo.cpu }}</td></tr>
+        <tr><th>Almacenamiento:</th><td>{{ equipo.almacenamiento }}</td></tr>
+        <tr><th>Ubicación:</th><td>{{ equipo.ubicacion }}</td></tr>
+        <tr><th>Sistema Operativo:</th><td>{{ equipo.sistema_operativo }}</td></tr>
+    </table>
+
+    <h2>Registros de Procedimientos</h2>
+    <ul>
+        {% for registro in equipo.registros %}
+        <li>
+            <strong>{{ registro.fecha }} - {{ registro.tipo }}</strong>: {{ registro.descripcion }}
+            {% if registro.link %}
+            - <a href="{{ registro.link }}" target="_blank">Ver Documento</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <a href="/">Volver</a>
+</body>
+</html>
